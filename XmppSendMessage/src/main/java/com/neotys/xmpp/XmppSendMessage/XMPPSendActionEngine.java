@@ -64,11 +64,11 @@ public final class XMPPSendActionEngine implements ActionEngine {
 
 			ChatManager chatManager = ChatManager.getInstanceFor(XMPPconnection);
 			LinkedBlockingQueue<XmppPacket> packetqueue=new LinkedBlockingQueue<XmppPacket>();
-			context.getCurrentVirtualUser().put("receviequeue",packetqueue);
-    		chatManager.addIncomingListener(new IncomingXMPPMessageListner(packetqueue));
+			chatManager.addIncomingListener(new IncomingXMPPMessageListner(packetqueue));
     		chatManager.addOutgoingListener(new OutGoingMessageLIstener(context));
-    		
-    		try {
+			context.getCurrentVirtualUser().put("receviequeue",packetqueue);
+
+			try {
 				EntityBareJid dest= JidCreate.entityBareFrom(ChatWith);
 				Chat chat=chatManager.chatWith(dest);
 				chat.send(Message);

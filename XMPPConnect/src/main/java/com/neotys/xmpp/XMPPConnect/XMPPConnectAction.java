@@ -16,7 +16,11 @@ public final class XMPPConnectAction implements Action{
 	private static final String BUNDLE_NAME = "com.neotys.xmpp.XMPPConnect.bundle";
 	private static final String DISPLAY_NAME = ResourceBundle.getBundle(BUNDLE_NAME, Locale.getDefault()).getString("displayName");
 	private static final String DISPLAY_PATH = ResourceBundle.getBundle(BUNDLE_NAME, Locale.getDefault()).getString("displayPath");
-
+	public static final String Host="Host";
+	public static final String Port="Port";
+	public static final String XmppUserName="XmppUserName";
+	public static final String XmppPassword="XmppPassword";
+	public static final String XmppRequiresToCreateUser="XmppRequiresToCreateUser";
 	@Override
 	public String getType() {
 		return "XMPPConnect";
@@ -26,6 +30,13 @@ public final class XMPPConnectAction implements Action{
 	public List<ActionParameter> getDefaultActionParameters() {
 		final List<ActionParameter> parameters = new ArrayList<ActionParameter>();
 		// TODO Add default parameters.
+		// TODO Add default parameters.
+		parameters.add(new ActionParameter(Host,"Host"));
+		parameters.add(new ActionParameter(Port,"Port"));
+		parameters.add(new ActionParameter(XmppUserName,"XmppUserName"));
+		parameters.add(new ActionParameter(XmppPassword,"XmppPassword"));
+		parameters.add(new ActionParameter(XmppRequiresToCreateUser,"false"));
+
 		return parameters;
 	}
 
@@ -44,8 +55,12 @@ public final class XMPPConnectAction implements Action{
 	public String getDescription() {
 		final StringBuilder description = new StringBuilder();
 		// TODO Add description
-		description.append("XMPPConnect description.\n");
-
+		description.append("XMPPConnect description will create the XMPP session , requires the following parametersn");
+		description.append("\tHost : Host of the xmpp server");
+		description.append("\tPort : Port of the xmpp server");
+		description.append("\tXmppUserName : Optionnal XmppUsername requires to connect");
+		description.append("\tXmppPassword : Optionnal XmppPassword requires to connect");
+		description.append("\tXmppRequiresToCreateUser : Optionnal if true the custom action will try to create a new user ");
 		return description.toString();
 	}
 
