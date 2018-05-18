@@ -39,6 +39,9 @@
     <orderEntry type="library" name="Maven: org.igniterealtime.smack:smack-im:4.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.igniterealtime.smack:smack-extensions:4.2.0" level="project" />
     <orderEntry type="module" module-name="XmppPacket" />
+    <orderEntry type="library" name="Maven: org.igniterealtime.smack:smack-java7:4.2.4" level="project" />
+    <orderEntry type="library" name="Maven: org.igniterealtime.smack:smack-resolver-javax:4.2.4" level="project" />
+    <orderEntry type="library" name="Maven: org.igniterealtime.smack:smack-sasl-javax:4.2.4" level="project" />
     <orderEntry type="library" name="Maven: org.mockito:mockito-all:1.9.5" level="project" />
   </component>
 </module>

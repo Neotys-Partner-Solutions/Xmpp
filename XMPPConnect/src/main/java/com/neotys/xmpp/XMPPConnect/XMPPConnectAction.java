@@ -18,6 +18,7 @@ public final class XMPPConnectAction implements Action{
 	private static final String DISPLAY_PATH = ResourceBundle.getBundle(BUNDLE_NAME, Locale.getDefault()).getString("displayPath");
 	public static final String Host="Host";
 	public static final String Port="Port";
+	public static final String Domain="Domain";
 	public static final String XmppUserName="XmppUserName";
 	public static final String XmppPassword="XmppPassword";
 	public static final String XmppRequiresToCreateUser="XmppRequiresToCreateUser";
@@ -33,6 +34,7 @@ public final class XMPPConnectAction implements Action{
 		// TODO Add default parameters.
 		parameters.add(new ActionParameter(Host,"Host"));
 		parameters.add(new ActionParameter(Port,"Port"));
+		parameters.add(new ActionParameter(Domain,"Domain"));
 		parameters.add(new ActionParameter(XmppUserName,"XmppUserName"));
 		parameters.add(new ActionParameter(XmppPassword,"XmppPassword"));
 		parameters.add(new ActionParameter(XmppRequiresToCreateUser,"false"));
@@ -58,6 +60,7 @@ public final class XMPPConnectAction implements Action{
 		description.append("XMPPConnect description will create the XMPP session , requires the following parametersn");
 		description.append("\tHost : Host of the xmpp server");
 		description.append("\tPort : Port of the xmpp server");
+		description.append("\tDomain : Optionnal Xmpp Domain ");
 		description.append("\tXmppUserName : Optionnal XmppUsername requires to connect");
 		description.append("\tXmppPassword : Optionnal XmppPassword requires to connect");
 		description.append("\tXmppRequiresToCreateUser : Optionnal if true the custom action will try to create a new user ");

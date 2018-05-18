@@ -1,5 +1,6 @@
 package com.neotys.xmpp.XMPPConnect;
 
+import java.net.InetAddress;
 import java.util.List;
 
 import com.google.common.base.Strings;
@@ -12,6 +13,8 @@ import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 import org.jivesoftware.smackx.iqregister.AccountManager;
+import org.jxmpp.jid.DomainBareJid;
+import org.jxmpp.jid.Jid;
 import org.jxmpp.jid.parts.Localpart;
 
 public final class XMPPConnectActionEngine implements ActionEngine {
@@ -21,6 +24,7 @@ public final class XMPPConnectActionEngine implements ActionEngine {
 	private String Username=null;
 	private String Password=null;
 	private String CreateUser=null;
+	private String Domain=null;
 	private boolean HasTocreateUser=false;
 
 	@Override
@@ -28,6 +32,8 @@ public final class XMPPConnectActionEngine implements ActionEngine {
 		final SampleResult sampleResult = new SampleResult();
 		final StringBuilder requestBuilder = new StringBuilder();
 		final StringBuilder responseBuilder = new StringBuilder();
+		XMPPTCPConnectionConfiguration conf;
+
 		for(ActionParameter parameter:parameters) {
 			switch(parameter.getName()) {
 
@@ -38,14 +44,17 @@ public final class XMPPConnectActionEngine implements ActionEngine {
 				case XMPPConnectAction.Port:
 					sPort = parameter.getValue();
 					break;
-				case XMPPConnectAction.XmppPassword:
+				case XMPPConnectAction.XmppUserName:
 					Username = parameter.getValue();
 					break;
-				case XMPPConnectAction.XmppUserName:
+				case XMPPConnectAction.XmppPassword:
 					Password = parameter.getValue();
 					break;
 				case XMPPConnectAction.XmppRequiresToCreateUser:
 					CreateUser = parameter.getValue();
+					break;
+				case XMPPConnectAction.Domain:
+					Domain = parameter.getValue();
 					break;
 			}
 		}
@@ -94,12 +103,30 @@ public final class XMPPConnectActionEngine implements ActionEngine {
 		try {
 			sampleResult.sampleStart();
 
+			if (!Strings.isNullOrEmpty(Domain))
+			{
 
-			XMPPTCPConnectionConfiguration conf = XMPPTCPConnectionConfiguration.builder()
-					.setHost(Host)
-					.setPort(port)
-					.setSecurityMode(ConnectionConfiguration.SecurityMode.disabled)
-					.build();
+				conf= XMPPTCPConnectionConfiguration.builder()
+						.setHost(Host)
+						.setPort(port)
+						.setHostAddress(InetAddress.getByName(Host))
+						.setXmppDomain(Domain)
+						.setSecurityMode(ConnectionConfiguration.SecurityMode.disabled)
+						.setDebuggerEnabled(true)
+						.build();
+
+			}
+			else
+			{
+				conf= XMPPTCPConnectionConfiguration.builder()
+						.setHost(Host)
+						.setHostAddress(InetAddress.getByName(Host))
+						.setPort(port)
+						.setSecurityMode(ConnectionConfiguration.SecurityMode.disabled)
+						.setDebuggerEnabled(true)
+						.build();
+
+			}
 
 			AbstractXMPPConnection connection = new XMPPTCPConnection(conf);
 			connection.connect();
