@@ -1,18 +1,12 @@
-package com.neotys.xmpp.XmppTransferFileContent;
+package com.neotys.xmpp.XmppTransfertFileContent;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
-import java.util.concurrent.LinkedBlockingQueue;
 
 import org.jivesoftware.smack.AbstractXMPPConnection;
-import org.jivesoftware.smack.SmackException.NotConnectedException;
-import org.jivesoftware.smack.chat2.Chat;
-import org.jivesoftware.smack.chat2.ChatManager;
 import org.jivesoftware.smackx.filetransfer.FileTransferManager;
 import org.jivesoftware.smackx.filetransfer.OutgoingFileTransfer;
-import org.jxmpp.jid.EntityBareJid;
-import org.jxmpp.jid.EntityFullJid;
 import org.jxmpp.jid.impl.JidCreate;
 import org.jxmpp.stringprep.XmppStringprepException;
 
@@ -21,8 +15,6 @@ import com.neotys.extensions.action.ActionParameter;
 import com.neotys.extensions.action.engine.ActionEngine;
 import com.neotys.extensions.action.engine.Context;
 import com.neotys.extensions.action.engine.SampleResult;
-import com.neotys.xmpp.XmppPacket.XmppPacket;
-import org.jxmpp.util.XmppStringUtils;
 
 
 public final class XmppTransferFileContentActionEngine implements ActionEngine {

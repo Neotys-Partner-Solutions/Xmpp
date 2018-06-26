@@ -1,4 +1,4 @@
-package com.neotys.util.LoadXmlFromFile;
+package com.neotys.util.xmpp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import com.neotys.extensions.action.ActionParameter;
 import com.neotys.extensions.action.engine.ActionEngine;
 
 public final class LoadXmlFromFileAction implements Action{
-	private static final String BUNDLE_NAME = "com.neotys.util.LoadXmlFromFile.bundle";
+	private static final String BUNDLE_NAME = "com.neotys.util.xmpp.bundle";
 	private static final String DISPLAY_NAME = ResourceBundle.getBundle(BUNDLE_NAME, Locale.getDefault()).getString("displayName");
 	private static final String DISPLAY_PATH = ResourceBundle.getBundle(BUNDLE_NAME, Locale.getDefault()).getString("displayPath");
 	public static final String XMLFilePath="XMLFilePath";
@@ -33,7 +33,7 @@ public final class LoadXmlFromFileAction implements Action{
 
 	@Override
 	public Class<? extends ActionEngine> getEngineClass() {
-		return com.neotys.util.LoadXmlFromFile.LoadXmlFromFileActionEngine.class;
+		return LoadXmlFromFileActionEngine.class;
 	}
 
 	@Override

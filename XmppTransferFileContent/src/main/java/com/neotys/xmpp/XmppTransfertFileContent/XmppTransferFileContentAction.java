@@ -1,4 +1,4 @@
-package com.neotys.xmpp.XmppTransferFileContent;
+package com.neotys.xmpp.XmppTransfertFileContent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public final class XmppTransferFileContentAction implements Action{
 	static final String ContentToTransfert="ContentToTransfert";
 	static final String FileName="FileName";
 	static final String Description="Description";
-	private static final String BUNDLE_NAME = "com.neotys.xmpp.XmppTransferFileContent.bundle";
+	private static final String BUNDLE_NAME = "com.neotys.xmpp.XmppTransfertFileContent.bundle";
 	private static final String DISPLAY_NAME = ResourceBundle.getBundle(BUNDLE_NAME, Locale.getDefault()).getString("displayName");
 	private static final String DISPLAY_PATH = ResourceBundle.getBundle(BUNDLE_NAME, Locale.getDefault()).getString("displayPath");
 
@@ -33,7 +33,7 @@ public final class XmppTransferFileContentAction implements Action{
 		parameters.add(new ActionParameter(ChatWith,"Xmpp adress for the recipient"));
 		parameters.add(new ActionParameter(ContentToTransfert,"Content of your message"));
 		parameters.add(new ActionParameter(FileName,"Name of the file to transfert"));
-		parameters.add(new ActionParameter(Description,"Desription "));
+		parameters.add(new ActionParameter(Description,"Desciption "));
 
 		return parameters;
 	}

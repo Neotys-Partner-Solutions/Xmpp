@@ -1,4 +1,4 @@
-package com.neotys.util.LoadXmlFromFile;
+package com.neotys.xmpp;
 
 import java.util.List;
 

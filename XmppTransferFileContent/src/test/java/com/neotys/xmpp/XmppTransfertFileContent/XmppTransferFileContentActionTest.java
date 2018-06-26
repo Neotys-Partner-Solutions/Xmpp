@@ -1,7 +1,8 @@
-package com.neotys.xmpp.XmppTransferFileContent;
+package com.neotys.xmpp.XmppTransfertFileContent;
 
 import static org.junit.Assert.assertEquals;
 
+import com.neotys.xmpp.XmppTransfertFileContent.XmppTransferFileContentAction;
 import org.junit.Test;
 
 public class XmppTransferFileContentActionTest {

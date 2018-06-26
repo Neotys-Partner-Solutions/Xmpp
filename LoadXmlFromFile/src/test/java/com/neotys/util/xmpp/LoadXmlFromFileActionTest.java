@@ -1,6 +1,7 @@
-package com.neotys.util.LoadXmlFromFile;
+package com.neotys.util.xmpp;
 
 import static org.junit.Assert.assertEquals;
+
 
 import org.junit.Test;
 

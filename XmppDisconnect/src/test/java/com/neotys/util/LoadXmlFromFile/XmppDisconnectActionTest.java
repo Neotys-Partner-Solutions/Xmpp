@@ -2,6 +2,7 @@ package com.neotys.util.LoadXmlFromFile;
 
 import static org.junit.Assert.assertEquals;
 
+import com.neotys.xmpp.XmppDisconnectAction;
 import org.junit.Test;
 
 public class XmppDisconnectActionTest {

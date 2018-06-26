@@ -1,1 +1,3 @@
-com.neotys.util.LoadXmlFromFile.LoadXmlFromFileAction
+com.neotys.util.xmpp.LoadXmlFromFileAction
+com.neotys.util.xmpp.Base64EncodeAction
+com.neotys.util.xmpp.Base64EncodeAndZlibCompressAction

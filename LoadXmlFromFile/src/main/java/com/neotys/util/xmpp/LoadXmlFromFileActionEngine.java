@@ -1,6 +1,6 @@
-package com.neotys.util.LoadXmlFromFile;
+package com.neotys.util.xmpp;
 
-import java.io.File;
+import java.io.*;
 import java.util.List;
 
 
@@ -9,12 +9,6 @@ import com.neotys.extensions.action.ActionParameter;
 import com.neotys.extensions.action.engine.ActionEngine;
 import com.neotys.extensions.action.engine.Context;
 import com.neotys.extensions.action.engine.SampleResult;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
-import org.w3c.dom.Element;
 
 public final class LoadXmlFromFileActionEngine implements ActionEngine {
 	private String  FilePAth;
@@ -51,21 +45,24 @@ public final class LoadXmlFromFileActionEngine implements ActionEngine {
 			}
 			else
 			{
-				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-				Document doc = dBuilder.parse(file);
 				sampleResult.sampleStart();
-				appendLineToStringBuilder(responseBuilder, doc.toString());
+				BufferedReader br = new BufferedReader(new FileReader(FilePAth));
+				String lineContent = null;
+				while ((lineContent = br.readLine()) != null)
+				{
+					appendLineToStringBuilder(responseBuilder, lineContent);
+				}
 				sampleResult.sampleEnd();
-
 			}
-		}
-		catch(Exception e)
-		{
-			return getErrorResult(context, sampleResult, "Technical Error :  "
-					+ e.getMessage() + ".", e);
 
-		}
+
+	}
+	catch(Exception e)
+	{
+		return getErrorResult(context, sampleResult, "Technical Error :  "
+				+ e.getMessage() + ".", e);
+
+	}
 
 
 		sampleResult.setRequestContent(requestBuilder.toString());
@@ -82,7 +79,7 @@ public final class LoadXmlFromFileActionEngine implements ActionEngine {
 	 */
 	private static SampleResult getErrorResult(final Context context, final SampleResult result, final String errorMessage, final Exception exception) {
 		result.setError(true);
-		result.setStatusCode("NL-XmppDisconnect_ERROR");
+		result.setStatusCode("NL-LoadXmlFromFile_ERROR");
 		result.setResponseContent(errorMessage);
 		if(exception != null){
 			context.getLogger().error(errorMessage, exception);

@@ -63,6 +63,11 @@
     <artifactId>mockito-all</artifactId>
     <version>1.9.5</version>
 </dependency>
+        <dependency>
+            <groupId>org.igniterealtime.smack</groupId>
+            <artifactId>smack-core</artifactId>
+            <version>4.3.0-beta1</version>
+        </dependency>
     </dependencies>
     <build>
         <pluginManagement>

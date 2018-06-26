@@ -1,4 +1,4 @@
-package com.neotys.xmpp.XmppTransferFileContent;
+package com.neotys.xmpp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,31 +12,26 @@ import com.neotys.extensions.action.Action;
 import com.neotys.extensions.action.ActionParameter;
 import com.neotys.extensions.action.engine.ActionEngine;
 
-public final class XMPPSendAction implements Action{
-	static final String ChatWith="ChatWith";
-	static final String Message="Message";
-	
-	private static final String BUNDLE_NAME = "com.neotys.xmpp.XmppTransferFileContent.bundle";
+public final class XmppDisconnectAction implements Action{
+	private static final String BUNDLE_NAME = "com.neotys.xmpp.bundle";
 	private static final String DISPLAY_NAME = ResourceBundle.getBundle(BUNDLE_NAME, Locale.getDefault()).getString("displayName");
 	private static final String DISPLAY_PATH = ResourceBundle.getBundle(BUNDLE_NAME, Locale.getDefault()).getString("displayPath");
 
 	@Override
 	public String getType() {
-		return "XMPPSend";
+		return "XmppDisconnect";
 	}
 
 	@Override
 	public List<ActionParameter> getDefaultActionParameters() {
 		final List<ActionParameter> parameters = new ArrayList<ActionParameter>();
 		// TODO Add default parameters.
-		parameters.add(new ActionParameter(ChatWith,"Xmpp adress for the recipient"));
-		parameters.add(new ActionParameter(Message,"Content of your message"));
 		return parameters;
 	}
 
 	@Override
 	public Class<? extends ActionEngine> getEngineClass() {
-		return XMPPSendActionEngine.class;
+		return XmppDisconnectActionEngine.class;
 	}
 
 	@Override
@@ -49,10 +44,8 @@ public final class XMPPSendAction implements Action{
 	public String getDescription() {
 		final StringBuilder description = new StringBuilder();
 		// TODO Add description
-		description.append("XMPPSend will send a Message to a speciif xmpp recipient.\n")
-		.append("The parameters are : \n")
-		.append("ChatWith : Adress of the recipient \n")
-		.append("Message  : Content of the message \n");
+		description.append("XmppDisconnect will disconnect from the XMPP server.\n");
+
 		return description.toString();
 	}
 
